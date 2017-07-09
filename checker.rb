@@ -13,6 +13,10 @@ class Checker
     @changed_word = nil
   end
 
+
+# lsdjflsadjfalsjfaljfdalsjfdaf
+
+
   def check_letter(user_input)
     @user_input = user_input
     extra_letter = case user_input
