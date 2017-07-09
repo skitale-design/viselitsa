@@ -6,10 +6,6 @@
 
 class Checker
   def initialize(uniq_letters)
-    uniq_letters << "е" if (uniq_letters.include?("ё"))
-    uniq_letters << "ё" if (uniq_letters.include?("е"))
-    uniq_letters << "й" if (uniq_letters.include?("и"))
-    uniq_letters << "и" if (uniq_letters.include?("й"))
     @uniq_letters = uniq_letters.uniq!
     @good_letters = []
     @bad_letters = []
