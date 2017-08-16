@@ -1,6 +1,5 @@
 class Game
   attr_accessor :word_array, :good_letters, :errors
-
   MAX_ERRORS = 7
 
   def initialize(word)
@@ -18,7 +17,6 @@ class Game
   end
 
   def check_letter(user_input)
-    
     extra_letter = case user_input
                    when 'е' then 'ё'
                    when 'ё' then 'е'
@@ -36,7 +34,6 @@ class Game
       unless was_typed?(user_input)
         @bad_letters << user_input
         @errors += 1
-        puts "Gsme = errros = #{@errors}"
       end
     end
     @status = check_status
