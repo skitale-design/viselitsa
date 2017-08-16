@@ -1,18 +1,22 @@
 class Printer
 
+  IMAGE_PATH = 'image'
+
   def initialize(game)
-    @good_letters = game.good_letters
-    @word_array = game.word_array
-    @errors = game.errors
+    @game = game
   end
 
   def print_info
-      @word_array.each do |letter|
-        if @good_letters.include?(letter)
+      @game.word_array.each do |letter|
+        if @game.good_letters.include?(letter)
           print " #{letter} "
         else
           print " _ "
         end
       end
+  end
+
+  def print_image
+    File.readlines("#{IMAGE_PATH}/#{@game.errors}.txt", '\n').map {|x| puts x}
   end
 end

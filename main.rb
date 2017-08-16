@@ -14,6 +14,7 @@ loop do
   print "\n #{i} Введите букву:"
   game.next_step
   printer.print_info
+  printer.print_image
   break if game.finish?
   i += 1
 end

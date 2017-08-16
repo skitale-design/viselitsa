@@ -36,6 +36,7 @@ class Game
       unless was_typed?(user_input)
         @bad_letters << user_input
         @errors += 1
+        puts "Gsme = errros = #{@errors}"
       end
     end
     @status = check_status
