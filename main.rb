@@ -10,7 +10,7 @@ game = Game.new(word)
 printer = Printer.new(game)
 puts "Загаданное слово состоит из #{word.size} букв"
 printer.print_info
-i = 0
+i = 1
 loop do
   print "\n Попытка №#{i} Введите букву:"
   game.next_step
