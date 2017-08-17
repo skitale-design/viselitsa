@@ -1,8 +1,12 @@
 class WordReader
   def initialize(path)
-    file = File.new(path, "r:UTF-8")
-    @word_list = file.readlines
-    file.close
+    begin
+      file = File.new(path, "r:UTF-8")
+      @word_list = file.readlines
+      file.close
+    rescue(SystemCallError) => e
+      abort "Ошибка! #{e.message}"
+    end
   end
 
   def word
