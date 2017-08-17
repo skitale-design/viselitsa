@@ -12,7 +12,7 @@ puts "Загаданное слово состоит из #{word.size} букв"
 printer.print_info
 i = 0
 loop do
-  print "\n #{i} Введите букву:"
+  print "\n Попытка №#{i} Введите букву:"
   game.next_step
   printer.print_info
   printer.print_image
