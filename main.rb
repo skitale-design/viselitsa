@@ -8,7 +8,8 @@ word = file.word
 
 game = Game.new(word)
 printer = Printer.new(game)
-
+puts "Загаданное слово состоит из #{word.size} букв"
+printer.print_info
 i = 0
 loop do
   print "\n #{i} Введите букву:"

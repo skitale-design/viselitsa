@@ -17,6 +17,10 @@ class Printer
   end
 
   def print_image
+    begin
     File.readlines("#{IMAGE_PATH}/#{@game.errors}.txt", '\n').map {|x| puts x}
+    rescue Errno::ENOENT => e
+      abort "\n\nОшибка! Не найден файл #{"#{IMAGE_PATH}/#{@game.errors}.txt"} : #{e.message}"
+    end
   end
 end
