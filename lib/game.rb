@@ -1,6 +1,5 @@
 class Game
   attr_accessor :word_array, :good_letters, :errors
-  attr_reader :tries_left
   MAX_ERRORS = 7
 
   def initialize(word)
@@ -10,7 +9,6 @@ class Game
     @bad_letters = []
     @status = :in_progress
     @errors = 0
-    @tries_left = MAX_ERRORS
   end
 
   def next_step
@@ -24,12 +22,11 @@ class Game
 
 
   def check_letter(user_input)
-    @tries_left -= 1
     extra_letter = case user_input
-                   when 'е' then 'ё'
-                   when 'ё' then 'е'
-                   when 'и' then 'й'
-                   when 'й' then 'и'
+    when 'е' then 'ё'
+                     when 'ё' then 'е'
+                     when 'и' then 'й'
+                     when 'й' then 'и'
                    end
     unless extra_letter.nil?
       @good_letters << extra_letter
@@ -45,6 +42,10 @@ class Game
       end
     end
     @status = check_status
+  end
+
+  def tries_left
+    MAX_ERRORS - @errors
   end
 
   def was_typed?(user_input)
