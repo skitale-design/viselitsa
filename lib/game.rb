@@ -1,5 +1,6 @@
 class Game
   attr_accessor :word_array, :good_letters, :errors
+  attr_reader :tries_left
   MAX_ERRORS = 7
 
   def initialize(word)
@@ -9,14 +10,21 @@ class Game
     @bad_letters = []
     @status = :in_progress
     @errors = 0
+    @tries_left = MAX_ERRORS
   end
 
   def next_step
     user_input = STDIN.gets.chomp.downcase
+    if was_typed?(user_input)
+      puts ">> Букву \"#{user_input}\" вы уже набирали <<"
+      return
+    end
     check_letter(user_input)
   end
 
+
   def check_letter(user_input)
+    @tries_left -= 1
     extra_letter = case user_input
                    when 'е' then 'ё'
                    when 'ё' then 'е'
@@ -40,7 +48,7 @@ class Game
   end
 
   def was_typed?(user_input)
-    @bad_letters.include?(user_input)
+    @bad_letters.include?(user_input) || @good_letters.include?(user_input)
   end
 
   def check_status

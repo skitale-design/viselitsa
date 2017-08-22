@@ -1,4 +1,4 @@
-require_relative "lib/wordReader"
+require_relative "lib/word_reader"
 require_relative "lib/game"
 require_relative "lib/printer"
 
@@ -10,14 +10,13 @@ game = Game.new(word)
 printer = Printer.new(game)
 puts "Загаданное слово состоит из #{word.size} букв"
 printer.print_info
-i = 0
+
 loop do
-  print "\n Попытка №#{i} Введите букву:"
+  print "\n Попыток осталось: #{game.tries_left} Введите букву:"
   game.next_step
   printer.print_info
   printer.print_image
   break if game.finish?
-  i += 1
 end
 
 puts "\nСлово было \"#{word}\""
